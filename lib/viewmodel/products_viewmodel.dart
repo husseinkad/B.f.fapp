@@ -26,6 +26,7 @@ class ProductsViewModel extends ChangeNotifier {
     var response;
     try {
       var url = Uri.parse('https://bagdadfashionfactory.pythonanywhere.com/api/products');
+
       debugPrint('url: $url');
       response = await http.get(
         url,

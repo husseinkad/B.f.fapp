@@ -4,6 +4,7 @@ import 'package:bff/widgets/myicons.dart';
 import 'package:bff/widgets/quantity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:bff/screens/cart_page.dart';
 
@@ -285,8 +286,14 @@ class _DetailsPageState extends State<DetailsPage> {
                                     backgroundColor: MaterialStateProperty.all<
                                         Color>(const Color(0xffF8FB56)),
                                   ),
-                                  onPressed: () {
-                                    cart.add(widget.product);
+                                  onPressed: () async {
+                                    cart.addToCart(widget.product);
+                                    setState(() {
+                                      cart.saveData.write(cart.s, cart.basketItems.length);
+                                      cart.saveData.listen((){
+                                        print('box changed');
+                                      });
+                                    });
                                   },
                                   child: const Center(child: Text(
                                     'اضافه الى السله', style: TextStyle(

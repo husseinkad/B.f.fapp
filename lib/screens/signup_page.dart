@@ -103,7 +103,7 @@ class _SignUpState extends State<SignUp> {
                 child: Padding(
                   padding: const EdgeInsets.only(left: 190),
                   child: Text(
-                    'اسم المستخدم',
+                    'االبريد الالكتروني',
                     style: _textstyle,
                   ),
                 ),
@@ -121,7 +121,7 @@ class _SignUpState extends State<SignUp> {
                   keyboardType: TextInputType.name,
                   validator: (val) {
                     if (val!.isEmpty) {
-                      return 'خطا في ادخال اسم المستخدم';
+                      return 'خطا في ادخال البريد الالكتروني';
                     }
                     return null;
                   },

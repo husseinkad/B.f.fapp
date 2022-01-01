@@ -1,22 +1,26 @@
 import 'package:bff/main.dart';
 import 'package:bff/models/product.dart';
+import 'package:bff/screens/address_page.dart';
 import 'package:bff/screens/login_page.dart';
 import 'package:bff/widgets/myicons.dart';
 import 'package:bff/widgets/products.dart';
 import 'package:bff/widgets/quantity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
 class Cart extends ChangeNotifier {
   final List<Product> _items = [];
   double _totalPrice = 0.0;
   late Product product;
+  final saveData = GetStorage();
+  String s = '';
+
 
   void add(Product product) {
     _items.add(product);
-    _totalPrice += product.price;
-    notifyListeners();
+
   }
 
   void remove(Product product) {
@@ -61,9 +65,9 @@ class Cart extends ChangeNotifier {
 
   void addToCart(Product product) {
     bool exists = _items.indexWhere((element) => element.id == product.id) >= 0;
-
     if (!exists) {
       _items.add(product);
+      _totalPrice += product.price;
       notifyListeners();
     }
   }
@@ -130,43 +134,51 @@ class _Cart_pageState extends State<Cart_page> {
                 : Stack(
               alignment: Alignment.bottomCenter,
                   children: [
-                    ListView.builder(
-              itemCount: cart.basketItems.length,
-              itemBuilder: (context, index) {
-                    return Card(
-                      child: Column(
-                        children: [
-                          ListTile(
-                            leading:  Builder(
-                              builder: (context) {
-                                var baseurl = 'https://bagdadfashionfactory.pythonanywhere.com/';
-                                return CachedNetworkImage(
-                                  imageUrl:baseurl + cart.basketItems[index].images[0].image,
-                                  height: 270,
-                                  placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                                  errorWidget: (context, url, error) {
-                                    debugPrint('error: $error');
-                                    return const Icon(Icons.error);
-                                  },
-                                );
-                              }
-                            ),
-                            title: Text(cart.basketItems[index].name),
-                            subtitle:
-                            Text('IQD ${cart.basketItems[index].price.toString()}'),
-                            trailing: IconButton(
-                              icon: const Icon(BffIcons.deletebin),
-                              onPressed: () {
-                                cart.remove(cart.basketItems[index]);
-                              },
-                            ),
+                    Builder(
+                      builder: (context)  {
 
+                        return ListView.builder(
+
+              itemCount: cart.saveData.read(cart.s),
+              itemBuilder: (context, index) {
+
+                        return Card(
+                          child: Column(
+                            children: [
+                              ListTile(
+                                leading:  Builder(
+                                  builder: (context) {
+                                    var baseurl = 'https://bagdadfashionfactory.pythonanywhere.com/';
+                                    return CachedNetworkImage(
+
+                                      imageUrl:baseurl + cart.basketItems[index].images[0].image,
+                                      height: 270,
+                                      placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                                      errorWidget: (context, url, error) {
+                                        debugPrint('error: $error');
+                                        return const Icon(Icons.error);
+                                      },
+                                    );
+                                  }
+                                ),
+                                title: Text(cart.basketItems[index].name),
+                                subtitle:
+                                Text('IQD ${cart.basketItems[index].price.toString()}'),
+                                trailing: IconButton(
+                                  icon: const Icon(BffIcons.deletebin),
+                                  onPressed: () {
+                                    cart.remove(cart.basketItems[index]);
+                                  },
+                                ),
+
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    );
+                        );
               },
-            ),
+            );
+                      }
+                    ),
                      Positioned(
                           bottom: 0.0,
                         child: Column(
@@ -200,7 +212,7 @@ class _Cart_pageState extends State<Cart_page> {
                                           fontFamily: 'Tajawal',
                                           fontSize: 14,
                                           color: Colors.black)),
-                                      onPressed: () {
+                                      onPressed: () async {
                                         Navigator.of(context).push(MaterialPageRoute(
                                             builder: (_context) => const MyHomePage()));
                                       },
@@ -224,8 +236,14 @@ class _Cart_pageState extends State<Cart_page> {
                                         )),
                                       ),
                                       onPressed: () {
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (_context) => const Login()));
+                                        if(2 == 1) {
+                                          Navigator.of(context).push(MaterialPageRoute(
+                                              builder: (_context) => const Login()));
+                                        }
+                                        else{
+                                          Navigator.of(context).push(MaterialPageRoute(
+                                              builder: (_context) => const Address()));
+                                        }
                                       },
                                     ),
                                   ),

@@ -5,12 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
-class CardItem {
-  final String title;
-
-  const CardItem({required this.title});
-}
-
 class Categories extends StatefulWidget {
   const Categories({Key? key}) : super(key: key);
 

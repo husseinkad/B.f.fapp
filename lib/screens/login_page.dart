@@ -1,5 +1,6 @@
 import 'package:bff/screens/signup_page.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -8,8 +9,24 @@ class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
 }
 
-// ignore: constant_identifier_names
-enum AuthMode { Login, SignUp }
+login() async {
+  var headers = {'Accept': 'application/json'};
+  var request = http.MultipartRequest('POST', Uri.parse('https://bagdadfashionfactory.pythonanywhere.com/api/auth/signin'));
+  request.fields.addAll({
+    'email': 'emailcontroller.text',
+    'password': 'passwordcontroller.text'
+  });
+
+  request.headers.addAll(headers);
+
+  http.StreamedResponse response = await request.send();
+
+  if (response.statusCode == 200) {
+    print(await response.stream.bytesToString());
+  } else {
+    print(response.reasonPhrase);
+  }
+}
 
 final GlobalKey<FormState> _fromKey = GlobalKey();
 AuthMode _authMode = AuthMode.Login;
@@ -121,12 +138,12 @@ class _LoginState extends State<Login> {
                   keyboardType: TextInputType.name,
                   validator: (val) {
                     if (val!.isEmpty) {
-                      return 'خطا في ادخال اسم المستخدم';
+                      return 'خطا في ادخال البريد الالكتروني';
                     }
                     return null;
                   },
                   onSaved: (val) {
-                    _authData['username'] = val!;
+                    _authData['email'] = val!;
                   },
                 ),
               ),

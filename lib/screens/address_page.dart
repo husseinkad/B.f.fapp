@@ -67,7 +67,7 @@ class _AddressState extends State<Address> {
                   ),
                   const Center(
                     child: Text(
-                      'المدينة',
+                      'العنوان الكامل',
                       style: _textstyle,
                     ),
                   ),
@@ -88,63 +88,8 @@ class _AddressState extends State<Address> {
                       keyboardType: TextInputType.name,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Center(
-                    child: Text(
-                      'المنطقة',
-                      style: _textstyle,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SizedBox(
-                    width: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) *0.5,
-                    height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) *0.06,
-                    child: TextFormField(
-                      textDirection: TextDirection.rtl,
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade100,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                      controller: _textController,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const SizedBox(
-                    child: Center(
-                      child: Text(
-                        'اقرب نقطة دالة',
-                        style: _textstyle,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SizedBox(
-                    width: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) *0.5,
-                    height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top)*0.06,
-                    child: TextFormField(
-                      textDirection: TextDirection.rtl,
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade100,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
+            const SizedBox(
+                      height: 25,),
                   const SizedBox(
                     child: Center(
                       child: Text(
@@ -167,61 +112,6 @@ class _AddressState extends State<Address> {
                             borderRadius: BorderRadius.circular(10),
                           )),
                       keyboardType: TextInputType.number,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const SizedBox(
-                    child: Center(
-                      child: Text(
-                        'واتساب',
-                        style: _textstyle,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SizedBox(
-                    width: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) *0.5,
-                    height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top)*0.06,
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade100,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                      keyboardType: TextInputType.text,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 25,
-                  ),
-                  const SizedBox(
-                    child: Center(
-                      child: Text(
-                        'تلكرام',
-                        style: _textstyle,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  SizedBox(
-                    width: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top) *0.5,
-                    height: (MediaQuery.of(context).size.height - appBar.preferredSize.height - MediaQuery.of(context).padding.top)*0.06,
-                    child: TextFormField(
-                      textDirection: TextDirection.rtl,
-                      decoration: InputDecoration(
-                          fillColor: Colors.grey.shade100,
-                          filled: true,
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          )),
-                      keyboardType: TextInputType.text,
                     ),
                   ),
                   const SizedBox(

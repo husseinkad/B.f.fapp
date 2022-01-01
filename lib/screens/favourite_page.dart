@@ -57,8 +57,6 @@ class _Favourite_pageState extends State<Favourite_page> {
 
   @override
   Widget build(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
-    var screenHeight = MediaQuery.of(context).size.height;
     return Consumer<Favourite>(
       builder: (context, fav, child) {
         return Scaffold(

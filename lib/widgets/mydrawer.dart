@@ -1,9 +1,7 @@
-import 'package:bff/screens/address.dart';
-import 'package:bff/screens/address_page.dart';
 import 'package:bff/screens/cart_page.dart';
+import 'package:bff/screens/categories_page.dart';
 import 'package:bff/screens/favourite_page.dart';
 import 'package:bff/screens/login_page.dart';
-import 'package:bff/viewmodel/user_database.dart';
 import 'package:bff/widgets/myicons.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -40,7 +38,7 @@ class _MyDrawerState extends State<MyDrawer> {
                 onTap: _launchURL,
                 child: const Card(
                   child: ListTile(
-                    title: Text('انستقرام', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold , fontFamily: 'Tajawal'),),
+                    title: Text('انستغرام', style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold , fontFamily: 'Tajawal'),),
                   ),
                 ),
               ),
@@ -81,11 +79,11 @@ class _MyDrawerState extends State<MyDrawer> {
            child: Column(
                children: [
                  bulidMenuItem(text: 'السله', icon: BffIcons.handbag, onClicked: () => selectedItem(context, 0)),
+                 bulidMenuItem(text: 'الاقسام', icon: Icons.category_outlined, onClicked: () => selectedItem(context, 4)),
                  bulidMenuItem(text: 'المفضلة', icon: Icons.favorite_border, onClicked: () => selectedItem(context, 1)),
-                 bulidMenuItem(text: 'العنوان', icon: Icons.location_on_outlined, onClicked: () => selectedItem(context, 3)),
                  const Divider(),
                  bulidMenuItem(text: 'الدعم', icon: Icons.support_agent, onClicked: () => selectedItem(context, 2)),
-                 bulidMenuItem(text: 'تسجيل الدخول', icon: Icons.login, onClicked: () => selectedItem(context, 4)),
+                 bulidMenuItem(text: 'تسجيل الدخول', icon: Icons.login, onClicked: () => selectedItem(context, 3)),
                ],
            ),
         ),
@@ -122,10 +120,10 @@ void selectedItem(BuildContext context, int index) {
            createSupportDialog(context);
         break;
       case 3:
-        Navigator.of(context).push(MaterialPageRoute(builder: (_context) =>  const Address()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (_context) => const Login()));
         break;
       case 4:
-        Navigator.of(context).push(MaterialPageRoute(builder: (_context) => const Login()));
+        Navigator.of(context).push(MaterialPageRoute(builder: (_context) => const CategoriesPage()));
         break;
     }
 }
