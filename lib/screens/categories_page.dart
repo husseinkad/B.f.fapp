@@ -63,7 +63,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                   color: Colors.white70,
                   height: 35,
                   width: 120,
-                  margin: EdgeInsets.fromLTRB(0, 200, 150, 4.0),
+                  margin: EdgeInsets.fromLTRB(0, 200, 135, 4.0),
                   child: TextButton(
                     onPressed: (){},
                     child: Center(
@@ -102,8 +102,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
     var appBar = AppBar(
       backgroundColor: Colors.white,
       elevation: 0.0,
-      title: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 100),
+      title: Container(
+        margin: EdgeInsets.fromLTRB(85, 0, 0, 0),
         child: Text(
           'الاقسام',
           style: TextStyle(fontSize: 20, fontFamily: 'Tajawal', fontWeight: FontWeight.bold, color: Colors.black),
