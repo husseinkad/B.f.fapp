@@ -39,8 +39,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
           child: Center(
             child: Stack(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
+                Container(
                   child: Builder(
                       builder: (context) {
                         var  baseurl = 'https://bagdadfashionfactory.pythonanywhere.com';
@@ -56,6 +55,9 @@ class _CategoriesPageState extends State<CategoriesPage> {
                         );
                       }
                   ),
+                  color: Colors.white70,
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  width: MediaQuery.of(context).size.width * 1,
                 ),
                 Container(
                   color: Colors.white70,
@@ -68,7 +70,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                       child: Text(
                         categoryItem.name,
                         maxLines: 1,
-                        style: const TextStyle(fontSize: 22, fontFamily: 'Tajawal', fontWeight: FontWeight.bold, color: Colors.black),
+                        style: const TextStyle(fontSize: 20, fontFamily: 'Tajawal', fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                     ),
                   ),
@@ -101,11 +103,10 @@ class _CategoriesPageState extends State<CategoriesPage> {
       backgroundColor: Colors.white,
       elevation: 0.0,
       title: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 110),
+        padding: EdgeInsets.symmetric(horizontal: 100),
         child: Text(
           'الاقسام',
-          maxLines: 1,
-          style: TextStyle(fontSize: 22, fontFamily: 'Tajawal', fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(fontSize: 20, fontFamily: 'Tajawal', fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
       leading: IconButton(
